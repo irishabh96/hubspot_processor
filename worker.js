@@ -200,7 +200,7 @@ const processContacts = async (domain, hubId, q) => {
 
         if (new Date() > expirationDate) await refreshAccessToken(domain, hubId);
         // Bug: not a bug but use _ instead of reject if we're not using reject to make it more clear
-        await new Promise((resolve, _) => setTimeout(resolve, 5000 * Math.pow(2, tryCount)));
+        await new Promise((resolve, reject) => setTimeout(resolve, 5000 * Math.pow(2, tryCount)));
       }
     }
 
@@ -339,7 +339,7 @@ const processMeetings = async (domain, hubId, q) => {
 
         if (new Date() > expirationDate) await refreshAccessToken(domain, hubId);
 
-        await new Promise((resolve, _) => setTimeout(resolve, 5000 * Math.pow(2, tryCount)));
+        await new Promise((resolve, reject) => setTimeout(resolve, 5000 * Math.pow(2, tryCount)));
       }
     }
 

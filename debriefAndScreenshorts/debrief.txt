@@ -1,0 +1,15 @@
+Some  bottlenecks.
+
+1. The codes existing style isn't ideal. There's repetition (e.g., in the `process` functions), and error handling could be more consistent.
+
+2. Separating concerns into modules or services would enhance maintainability and scalability.  For example, API interaction, data processing, and database interaction could be distinct modules.  
+
+3. Using a message queue system (instead of `async.queue`) for background tasks would decouple the worker from the main application.
+
+4.Error handling is minimal, for example initially the query was not working but it didn't said that query is failing for invalid payload
+
+5. I would adopt consistent logging and possibly a debugging tool to ease troubleshooting.
+
+6. The current design runs synchronously and linearly, parallelizing across domains or accounts would make it scalable.
+
+7. Found some bugs in the code your can find by searching '// Bug:' in codebase
