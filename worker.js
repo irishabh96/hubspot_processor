@@ -284,6 +284,7 @@ const createQueue = (domain, actions) => {
     actions.push(action);
 
     // Bug: any specific reason to put number as 2000?
+    // Bug: why queue is not used one by one
     // if (actions.length > 2000) {
     if (actionsToSave.indexOf(action.actionName) !== -1) {
       goal(action, Action);
@@ -355,6 +356,7 @@ const processMeetings = async (domain, hubId, q) => {
       if (!meeting.properties) continue;
 
       try {
+        console.log('fetching contacts for ', meeting.id);
         const associatedContacts = await hubspotClient.crm.objects.meetings.associationsApi.getAll(
           meeting.id,
           'contacts'
